@@ -16,16 +16,15 @@ struct ToDoItem: Codable {
     var itemIdentifier: UUID
     
     func saveItem() {
-        
+        FileStorageManager.save(self, with: itemIdentifier.uuidString  )
     }
     
     func deleteItem() {
-        
-        
+        FileStorageManager.delete(itemIdentifier.uuidString)
     }
     
-    func marketAsCompleted() {
-        
-        
+    mutating func marketAsCompleted() {
+        self.completed = true
+        FileStorageManager.save(self, with: itemIdentifier.uuidString)
     }
 }
