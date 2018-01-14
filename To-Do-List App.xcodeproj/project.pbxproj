@@ -7,25 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		630286661FE4449B00CCC530 /* ToDoItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630286651FE4449B00CCC530 /* ToDoItemViewModel.swift */; };
+		6315401A1FE35183004487E7 /* MainToDoContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631540191FE35183004487E7 /* MainToDoContainerController.swift */; };
+		6315401C1FE3533C004487E7 /* Anchoring_UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315401B1FE3533C004487E7 /* Anchoring_UIViewExtension.swift */; };
+		631540201FE41A2B004487E7 /* ToDoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315401F1FE41A2B004487E7 /* ToDoListCell.swift */; };
 		632B43891FDE76A60077CA3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B43881FDE76A60077CA3B /* AppDelegate.swift */; };
-		632B438B1FDE76A60077CA3B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B438A1FDE76A60077CA3B /* ViewController.swift */; };
-		632B438E1FDE76A60077CA3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 632B438C1FDE76A60077CA3B /* Main.storyboard */; };
 		632B43901FDE76A60077CA3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 632B438F1FDE76A60077CA3B /* Assets.xcassets */; };
 		632B43931FDE76A60077CA3B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 632B43911FDE76A60077CA3B /* LaunchScreen.storyboard */; };
 		632B439B1FDE76B50077CA3B /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B439A1FDE76B50077CA3B /* ToDoItem.swift */; };
 		632B439D1FDE77250077CA3B /* FileStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632B439C1FDE77250077CA3B /* FileStorageManager.swift */; };
+		634B3A571FF2280700F5EC29 /* String_StrikeThrough.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634B3A561FF2280700F5EC29 /* String_StrikeThrough.swift */; };
+		6375641D200AB29E009DCB93 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375641C200AB29E009DCB93 /* LocalNotificationManager.swift */; };
+		6375641F200BC596009DCB93 /* ReminderPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6375641E200BC596009DCB93 /* ReminderPickerView.swift */; };
+		63756421200BC91E009DCB93 /* ReminderSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63756420200BC91E009DCB93 /* ReminderSettingsManager.swift */; };
+		638B694E1FECD57000D2E381 /* CustomUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B694D1FECD57000D2E381 /* CustomUI.swift */; };
+		638B699A1FEF500200D2E381 /* InfoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638B69991FEF500200D2E381 /* InfoContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		630286651FE4449B00CCC530 /* ToDoItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemViewModel.swift; sourceTree = "<group>"; };
+		631540191FE35183004487E7 /* MainToDoContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainToDoContainerController.swift; sourceTree = "<group>"; };
+		6315401B1FE3533C004487E7 /* Anchoring_UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Anchoring_UIViewExtension.swift; sourceTree = "<group>"; };
+		6315401F1FE41A2B004487E7 /* ToDoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListCell.swift; sourceTree = "<group>"; };
 		632B43851FDE76A60077CA3B /* To-Do-List App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "To-Do-List App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		632B43881FDE76A60077CA3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		632B438A1FDE76A60077CA3B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		632B438D1FDE76A60077CA3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		632B438F1FDE76A60077CA3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		632B43921FDE76A60077CA3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		632B43941FDE76A70077CA3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		632B439A1FDE76B50077CA3B /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		632B439C1FDE77250077CA3B /* FileStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorageManager.swift; sourceTree = "<group>"; };
+		634B3A561FF2280700F5EC29 /* String_StrikeThrough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_StrikeThrough.swift; sourceTree = "<group>"; };
+		6375641C200AB29E009DCB93 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		6375641E200BC596009DCB93 /* ReminderPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderPickerView.swift; sourceTree = "<group>"; };
+		63756420200BC91E009DCB93 /* ReminderSettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsManager.swift; sourceTree = "<group>"; };
+		638B694D1FECD57000D2E381 /* CustomUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUI.swift; sourceTree = "<group>"; };
+		638B69991FEF500200D2E381 /* InfoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,15 +75,71 @@
 			isa = PBXGroup;
 			children = (
 				632B43881FDE76A60077CA3B /* AppDelegate.swift */,
-				632B438A1FDE76A60077CA3B /* ViewController.swift */,
-				632B439A1FDE76B50077CA3B /* ToDoItem.swift */,
-				632B439C1FDE77250077CA3B /* FileStorageManager.swift */,
-				632B438C1FDE76A60077CA3B /* Main.storyboard */,
+				631540191FE35183004487E7 /* MainToDoContainerController.swift */,
+				63756422200C0B17009DCB93 /* Reminders */,
+				638B699D1FEF530F00D2E381 /* Plugins */,
+				638B694F1FECDCEC00D2E381 /* Helpers */,
+				638B69971FEF4FAA00D2E381 /* View */,
+				638B69981FEF4FB400D2E381 /* ViewModel */,
+				638B69961FEF4FA000D2E381 /* Model */,
 				632B438F1FDE76A60077CA3B /* Assets.xcassets */,
 				632B43911FDE76A60077CA3B /* LaunchScreen.storyboard */,
 				632B43941FDE76A70077CA3B /* Info.plist */,
 			);
 			path = "To-Do-List App";
+			sourceTree = "<group>";
+		};
+		63756422200C0B17009DCB93 /* Reminders */ = {
+			isa = PBXGroup;
+			children = (
+				63756420200BC91E009DCB93 /* ReminderSettingsManager.swift */,
+				6375641C200AB29E009DCB93 /* LocalNotificationManager.swift */,
+				6375641E200BC596009DCB93 /* ReminderPickerView.swift */,
+			);
+			path = Reminders;
+			sourceTree = "<group>";
+		};
+		638B694F1FECDCEC00D2E381 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6315401B1FE3533C004487E7 /* Anchoring_UIViewExtension.swift */,
+				638B694D1FECD57000D2E381 /* CustomUI.swift */,
+				634B3A561FF2280700F5EC29 /* String_StrikeThrough.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		638B69961FEF4FA000D2E381 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				632B439A1FDE76B50077CA3B /* ToDoItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		638B69971FEF4FAA00D2E381 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				638B69991FEF500200D2E381 /* InfoContainerView.swift */,
+				6315401F1FE41A2B004487E7 /* ToDoListCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		638B69981FEF4FB400D2E381 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				630286651FE4449B00CCC530 /* ToDoItemViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		638B699D1FEF530F00D2E381 /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				632B439C1FDE77250077CA3B /* FileStorageManager.swift */,
+			);
+			path = Plugins;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,7 +203,6 @@
 			files = (
 				632B43931FDE76A60077CA3B /* LaunchScreen.storyboard in Resources */,
 				632B43901FDE76A60077CA3B /* Assets.xcassets in Resources */,
-				632B438E1FDE76A60077CA3B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,24 +213,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				632B438B1FDE76A60077CA3B /* ViewController.swift in Sources */,
+				6315401C1FE3533C004487E7 /* Anchoring_UIViewExtension.swift in Sources */,
+				638B699A1FEF500200D2E381 /* InfoContainerView.swift in Sources */,
 				632B439D1FDE77250077CA3B /* FileStorageManager.swift in Sources */,
 				632B43891FDE76A60077CA3B /* AppDelegate.swift in Sources */,
 				632B439B1FDE76B50077CA3B /* ToDoItem.swift in Sources */,
+				638B694E1FECD57000D2E381 /* CustomUI.swift in Sources */,
+				6375641D200AB29E009DCB93 /* LocalNotificationManager.swift in Sources */,
+				634B3A571FF2280700F5EC29 /* String_StrikeThrough.swift in Sources */,
+				6315401A1FE35183004487E7 /* MainToDoContainerController.swift in Sources */,
+				63756421200BC91E009DCB93 /* ReminderSettingsManager.swift in Sources */,
+				631540201FE41A2B004487E7 /* ToDoListCell.swift in Sources */,
+				6375641F200BC596009DCB93 /* ReminderPickerView.swift in Sources */,
+				630286661FE4449B00CCC530 /* ToDoItemViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		632B438C1FDE76A60077CA3B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				632B438D1FDE76A60077CA3B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		632B43911FDE76A60077CA3B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

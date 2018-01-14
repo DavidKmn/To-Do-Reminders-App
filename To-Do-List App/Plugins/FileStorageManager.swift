@@ -12,8 +12,8 @@ import Foundation
 public class FileStorageManager {
     
     // get the doc directory
-    
     static fileprivate func getDocDirectory() -> URL {
+
         if let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             return url
         } else {
