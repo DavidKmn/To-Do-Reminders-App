@@ -14,7 +14,7 @@ struct ToDoItem: Codable {
     var completed: Bool
     var createdAt: Date
     var itemIdentifier: UUID
-    var reminderDate: Date
+    var reminderDate: Date?
     
     func saveItem() {
         FileStorageManager.save(self, with: itemIdentifier.uuidString  )

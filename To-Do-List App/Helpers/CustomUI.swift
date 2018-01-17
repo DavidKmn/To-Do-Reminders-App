@@ -12,6 +12,8 @@ import UIKit
 extension UIColor {
     static let lightBlue = #colorLiteral(red: 0.007843137255, green: 0.7960784314, blue: 0.8235294118, alpha: 1)
     static let brightYellow = #colorLiteral(red: 0.9882352941, green: 0.7529411765, blue: 0.1647058824, alpha: 1)
+    static let success = #colorLiteral(red: 0, green: 0.7529411765, blue: 0.4980392157, alpha: 1)
+    static let failure = #colorLiteral(red: 1, green: 0.3960784314, blue: 0.3843137255, alpha: 1)
 }
 
 class PlusButton: UIButton {

@@ -8,10 +8,18 @@
 
 import UIKit
 
+enum ReminderCreationOutcome: String {
+    
+    case success
+    case failure
+    
+}
+
 class ReminderSettingsManager: ReminderPickerViewDelegate {
     
     var reminderItem: ToDoItem
     let localNotifManager: LocalNotificationManager
+    var popupViewPresenter: PopUpViewPresenter?
     
     init(itemForReminding: ToDoItem) {
         self.reminderItem = itemForReminding
@@ -21,24 +29,27 @@ class ReminderSettingsManager: ReminderPickerViewDelegate {
     func didAskToSetReminderFor(date: Date) {
         reminderItem.reminderDate = date
 
-        localNotifManager.createLocalNotification(forItem: reminderItem) { (success) in
-            if success {
+        localNotifManager.createLocalNotification(forItem: reminderItem) { (outcome) in
+            
+            if outcome == .success {
                 print("Success Creating Notification")
                 
-                // Pressent Success Screen
-                
+                DispatchQueue.main.async {
+                    self.popupViewPresenter?.handleDismiss()
+                    self.presentOutcomeView(forOutcome: .success)
+                }
                 // Add a UI element to show shceduled notification on to the cell
-            } else {
+            } else if outcome == .failure {
                 print("Failure Creating Notification")
-                // Present Error Screen
+
+                self.presentOutcomeView(forOutcome: .failure)
+            
             }
         }
     }
     
-    let blackView = UIView()
-    
     lazy var reminderPickerView: ReminderPickerView = {
-        let rpv = ReminderPickerView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+        let rpv = ReminderPickerView()
         rpv.backgroundColor = .white
         rpv.layer.cornerRadius = 8
         rpv.delegate = self
@@ -49,40 +60,42 @@ class ReminderSettingsManager: ReminderPickerViewDelegate {
     
     func showSettings() {
         
-        if let window = UIApplication.shared.keyWindow {
-            blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-            
-            
-            blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleDismiss)))
-            
-            window.addSubview(blackView)
-            window.addSubview(reminderPickerView)
-            
-            reminderPickerView.centerXAnchor.constraint(equalTo: window.centerXAnchor).isActive = true
-            reminderPickerView.centerYAnchor.constraint(equalTo: window.centerYAnchor).isActive = true
-            
-            blackView.frame = window.frame
-            blackView.alpha = 0
-            reminderPickerView.alpha = 0
-            
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
-                self.blackView.alpha = 1
-                self.reminderPickerView.alpha = 1
-            }, completion: nil)
-        }
+        self.popupViewPresenter = PopUpViewPresenter(viewToPresent: reminderPickerView, withHeight: 250, withWidth: 300)
+
     }
     
-    @objc fileprivate func handleDismiss() {
+    fileprivate func presentOutcomeView(forOutcome outcome: ReminderCreationOutcome) {
         
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
-            self.blackView.alpha = 0
-            self.reminderPickerView.alpha = 0
-        }) { (completed) in
-            if completed {
-                self.blackView.removeFromSuperview()
-                self.reminderPickerView.removeFromSuperview()
-            }
+        let outcomeView = ReminderOutcomeView(frame: CGRect.zero, outcome: outcome)
+
+        if let window = UIApplication.shared.keyWindow {
+
+            window.addSubview(outcomeView)
+            
+            outcomeView.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, topPadding: 0, leadingPadding: 0, bottomPadding: 0, trailingPadding: 0, width: 80, height: 80)
+            outcomeView.anchorCenterYToSuperview()
+            outcomeView.anchorCenterXToSuperview()
+            
+            outcomeView.alpha = 0
+            
+            UIView.animate(withDuration: 0.4, delay: 0.2, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+                outcomeView.alpha = 1
+            }, completion: { (success) in
+                if success {
+                    dismissOutcomeView()
+                }
+            })
         }
+        
+        func dismissOutcomeView() {
+            UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                outcomeView.alpha = 0
+            }, completion: { (success) in
+                outcomeView.removeFromSuperview()
+            })
+        }
+        
     }
+
 }
 

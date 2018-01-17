@@ -49,7 +49,7 @@ class MainToDoContainerController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         view.backgroundColor = .white
         setupNavBar()
         setupViews()
@@ -81,36 +81,19 @@ class MainToDoContainerController: UIViewController, UITableViewDelegate, UITabl
         
     }
     
-    func didTapOnCreateNewItem() {
-        
-        let addAlertController = UIAlertController(title: "New Item", message: "Enter a title:", preferredStyle: .alert)
-        addAlertController.addTextField { (tf) in
-            tf.placeholder = "Title of To Do Item"
-        }
-        
-        let addAction = UIAlertAction(title: "Create", style: .default) { [weak self] (action) in
-            
-            guard let title = addAlertController.textFields?.first?.text else { return }
-            
-            let newToDoItem = ToDoItem(title: title, completed: false, createdAt: Date(), itemIdentifier: UUID(), reminderDate: Date().addingTimeInterval(5))
+    var popupViewPresenter: PopUpViewPresenter?
+    
+    lazy var itemCreationView: ItemCreationView = {
+        let itemCreationView = ItemCreationView()
+        itemCreationView.translatesAutoresizingMaskIntoConstraints = false
+        itemCreationView.delegate = self
+        itemCreationView.clipsToBounds = true
+        itemCreationView.layer.cornerRadius = 8
+        return itemCreationView
+    }()
 
-            newToDoItem.saveItem()
-            
-            self?.toDoListItems.append(newToDoItem)
-//
-//            LocalNotificationManager.createLocalNotification(forItem: newToDoItem)
-            
-            let newItemIndexPath = IndexPath(row: (self?.itemsTableView.numberOfRows(inSection: 0))!, section: 0)
-            self?.itemsTableView.insertRows(at: [newItemIndexPath], with: .automatic)
-            
-            
-        }
-        
-        addAlertController.addAction(addAction)
-        addAlertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        present(addAlertController, animated: true, completion: nil)
-        
+    func didTapOnCreateNewItem() {
+        self.popupViewPresenter = PopUpViewPresenter(viewToPresent: itemCreationView, withHeight: 150, withWidth: 250)
     }
     
     func loadData() {
@@ -221,3 +204,24 @@ class MainToDoContainerController: UIViewController, UITableViewDelegate, UITabl
         }
     }
 }
+
+
+extension MainToDoContainerController: ItemCreationViewDelegate {
+    
+    func didTapOnCreateItem(withTitle title: String) -> (Bool) {
+        
+        let newToDoItem = ToDoItem(title: title, completed: false, createdAt: Date(), itemIdentifier: UUID(), reminderDate: nil)
+        
+        newToDoItem.saveItem()
+        
+        self.toDoListItems.append(newToDoItem)
+        
+        let newItemIndexPath = IndexPath(row: (self.itemsTableView.numberOfRows(inSection: 0)), section: 0)
+        self.itemsTableView.insertRows(at: [newItemIndexPath], with: .automatic)
+        
+        return true
+    }
+}
+
+
+

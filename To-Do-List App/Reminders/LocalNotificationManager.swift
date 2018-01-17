@@ -11,12 +11,13 @@ import UserNotifications
 
 class LocalNotificationManager {
     
-    fileprivate func setupNotification(_ item: ToDoItem, completionHandler: @escaping (_ success: Bool) -> ()) {
+    fileprivate func setupNotification(_ item: ToDoItem, completionHandler: @escaping (_ success: ReminderCreationOutcome) -> ()) {
         
         let notification = UNMutableNotificationContent()
         notification.title = "To-Do Item: \"\(item.title)\" Is Due"
         
-        let comps = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: item.reminderDate)
+        guard let reminderDate = item.reminderDate else { return }
+        let comps = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: reminderDate)
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)
         
@@ -25,15 +26,15 @@ class LocalNotificationManager {
         UNUserNotificationCenter.current().add(request) { (error) in
             if let error = error {
                 print("Unable to add the notification: \(error)")
-                completionHandler(false)
+                completionHandler(.failure)
                 return
             }
-            print("Notifcation Added for \(item.reminderDate)")
-            completionHandler(true)
+            print("Notifcation Added for \(reminderDate)")
+            completionHandler(.success)
         }
     }
     
-    func createLocalNotification(forItem item: ToDoItem, completionHandler: @escaping (_ success: Bool) -> ()) {
+    func createLocalNotification(forItem item: ToDoItem, completionHandler: @escaping (_ success: ReminderCreationOutcome) -> ()) {
         
         UNUserNotificationCenter.current().getNotificationSettings { (notificationSettings) in
             switch notificationSettings.authorizationStatus {

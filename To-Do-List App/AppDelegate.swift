@@ -35,20 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         let options: UNAuthorizationOptions = [.badge, .alert, .sound]
         
-        notificationCenter.requestAuthorization(options: options) { (granted, error) in
+        notificationCenter.requestAuthorization(options: options) { (_, error) in
             
             if let error = error {
                 print("Failed to request auth: \(error)")
                 return
             }
-            
-            if granted {
-               print("Auth Granted ...")
-            } else {
-                print("Auth Denied ...")
-            }
         }
-    
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {

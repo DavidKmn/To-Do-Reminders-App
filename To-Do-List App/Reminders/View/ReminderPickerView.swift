@@ -63,7 +63,6 @@ class ReminderPickerView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setupElements()
     }
     
