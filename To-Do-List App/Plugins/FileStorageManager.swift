@@ -92,6 +92,18 @@ public class FileStorageManager {
         }
     }
     
+    static func deleteAll() {
+        do {
+            let files = try FileManager.default.contentsOfDirectory(atPath: getDocDirectory().path)
+            
+            files.forEach({ (fileName) in
+                delete(fileName)
+            })
+        } catch {
+            fatalError("Could not delete all Files")
+        }
+    }
+    
     // delete a file
     static func delete (_ fileName: String) {
         let url = getDocDirectory().appendingPathComponent(fileName, isDirectory: false)

@@ -49,7 +49,7 @@ class MainToDoContainerController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         view.backgroundColor = .white
         setupNavBar()
         setupViews()
@@ -60,6 +60,13 @@ class MainToDoContainerController: UIViewController, UITableViewDelegate, UITabl
     fileprivate func setupNavBar() {
         navigationItem.title = "MY LIST"
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let scaledTrashImg = #imageLiteral(resourceName: "trash").resizeImage(targetSize: CGSize(width: 36, height: 36))?.withRenderingMode(.alwaysOriginal)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: scaledTrashImg, style: .plain, target: self, action: #selector(clearAllTasks))
+    }
+    
+    @objc fileprivate func clearAllTasks() {
+        print("Deleting all")
     }
     
     fileprivate func setupViews() {
