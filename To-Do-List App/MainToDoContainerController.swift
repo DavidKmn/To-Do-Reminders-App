@@ -62,12 +62,24 @@ class MainToDoContainerController: UIViewController, UITableViewDelegate, UITabl
         navigationController?.navigationBar.prefersLargeTitles = true
         
         let scaledTrashImg = #imageLiteral(resourceName: "trash").resizeImage(targetSize: CGSize(width: 36, height: 36))?.withRenderingMode(.alwaysOriginal)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: scaledTrashImg, style: .plain, target: self, action: #selector(clearAllTasks))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: scaledTrashImg, style: .plain, target: self, action: #selector(deleteAllTasks))
     }
     
-    @objc fileprivate func clearAllTasks() {
-        print("Deleting all")
+    @objc fileprivate func deleteAllTasks() {
+        FileStorageManager.deleteAll()
+        toDoListItems.removeAll()
+        
+        let range = NSMakeRange(0, self.itemsTableView.numberOfSections)
+        let sections = NSIndexSet(indexesIn: range)
+        self.itemsTableView.reloadSections(sections as IndexSet, with: .fade)
     }
+    
+    func deleteToDoItem(for indexPath: IndexPath) {
+        toDoListItems[indexPath.row].deleteItem()
+        toDoListItems.remove(at: indexPath.row)
+        itemsTableView.deleteRows(at: [indexPath], with: .fade)
+    }
+    
     
     fileprivate func setupViews() {
         
@@ -168,12 +180,6 @@ class MainToDoContainerController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
-    }
-    
-    func deleteToDoItem(for indexPath: IndexPath) {
-        toDoListItems[indexPath.row].deleteItem()
-        toDoListItems.remove(at: indexPath.row)
-        itemsTableView.deleteRows(at: [indexPath], with: .fade)
     }
     
     func didCompleteToDoItem(_ cell: ToDoListCell) {

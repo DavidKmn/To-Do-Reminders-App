@@ -18,10 +18,7 @@ extension UIImage {
         let heightRatio = targetSize.height / originalSize.height
         let ratio = min(widthRatio, heightRatio)
         let newSize = CGSize(width: originalSize.width * ratio, height: originalSize.height * ratio)
-        
-        print(originalSize)
-        print(newSize)
-        
+
         let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
         let hasAlpha = false
         
