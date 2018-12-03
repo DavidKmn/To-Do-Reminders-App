@@ -104,9 +104,15 @@ class ItemCreationView: UIView {
     
     @objc private func handleCancelTap() {
         NotificationCenter.default.post(name: Constants.NotificationNames.cancelPopover, object: nil)
+        let _ = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(clearInputFields), userInfo: nil, repeats: false)
+    }
+    
+    @objc fileprivate func clearInputFields() {
+        taskNameField.text = nil
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }

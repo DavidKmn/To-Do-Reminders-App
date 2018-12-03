@@ -12,6 +12,7 @@ struct Constants {
     
     struct NotificationNames {
         static let cancelPopover = NSNotification.Name.init("cancelPopover")
+        static let clearCreationInputFields = NSNotification.Name.init("clearCreationInputFields")
     }
     
 }

@@ -48,6 +48,9 @@ class LocalNotificationManager {
                 self.setupNotification(item, completionHandler: completionHandler)
             case .denied:
                 print("Application Not Allowed to Display Notifications")
+            case .provisional:
+                // Need to handle
+                break
             }
         }
         
